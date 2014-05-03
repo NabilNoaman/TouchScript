@@ -33,7 +33,7 @@
                 <li class="logo"><h2>TouchScript</h2></li>
                 <li>GitHub (<a href="https://github.com/InteractiveLab/TouchScript">Unity</a>, <a href="https://github.com/InteractiveLab/TouchScript.as3">Flash</a>)</li>
                 <li>|</li>
-                <li><a href="files/TouchScript.4.1.unitypackage">Download Unity Package</a></li>
+                <li><a href="https://github.com/InteractiveLab/TouchScript/releases/latest">Latest release</a></li>
                 <li>|</li>
                 <li>Issues (<a href="https://github.com/InteractiveLab/TouchScript/issues">Unity</a>, <a href="https://github.com/InteractiveLab/TouchScript.as3/issues">Flash</a>)</li>
             </ul>
@@ -76,19 +76,7 @@
         </div>
         <div class="container page">
             <div class="row">
-                <div class="span3 bs-docs-sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav">
-                        <li><a href="#touchscript"><i class="icon-chevron-right"></i> TouchScript</a></li>
-                        <li><a href="#versions"><i class="icon-chevron-right"></i> Versions</a></li>
-                        <li><a href="#docs"><i class="icon-chevron-right"></i> Documentation</a></li>
-                        <li><a href="#description"><i class="icon-chevron-right"></i> Description</a></li>
-                        <li><a href="#examples"><i class="icon-chevron-right"></i> Examples</a></li>
-                        <li><a href="#tutorials"><i class="icon-chevron-right"></i> Tutorials</a></li>
-                        <li><a href="#faq"><i class="icon-chevron-right"></i> FAQ</a></li>
-                        <li><a href="#history   "><i class="icon-chevron-right"></i> Versions history</a></li>
-                    </ul>
-                </div>
-                <div class="span9">
+                <div class="span12">
                     <section id="touchscript">
                         <h2>TouchScript</h2>
                         <h4>Multitouch framework for Unity3d and Flash</h4>
@@ -114,235 +102,10 @@
                         <li><strong>It's free and open-source. Licensed under MIT license.</strong></li>
                         <li><a href="tutorials.internals.html">And more...</a></li>
                         </ul>
-                        </p><br/>
-                        <p><span class="label label-important">NOTE:</span> if you got a problem using <code>TouchScript</code> or running examples please check the <strong><a href="#faq">FAQ</a></strong> first.</p>
-                    </section>
-
-                    <section id="versions">    
-                        <h2>Versions</h2>
-                        <p><code>TouchScript</code> was originally developed in ActionScript 3 for Flash, rewritten from scratch in C# for Unity3d and at the moment Unity3d branch is where most of the development takes place. AS3 version as a little brother gets all the new features with a slight delay.</p><br/>
-
-                        <h4>Unity3d</h4>
-                        <p><ul>
-                        <li>Written in C#, uses standard C# event system.</li>
-                        <li>Tested with Unity 3.5.x and 4.x.</li>
-                        <li>Handles touch points mapping from screen space to 3d space.</li>
-                        <li>Supports native touch events on iOS, Android and WinRT.</li>
-                        </ul></p>
-                        <p>The latest stable version can be found in <a href="https://github.com/InteractiveLab/TouchScript">Master branch on GitHub</a>.<br/><a href="https://github.com/InteractiveLab/TouchScript/tree/develop">Develop branch</a> is usually more up-to-date but may contain more bugs.</p>
-                        <h5><span class="label label-important">NOTE:</span> Known limitations</h5>
-                        <ul>
-                        <li>Windows 7 touch recognition doesn't work in Unity IDE.</li>
-                        <li>The library relies on C# events so it doesn't work with JavaScript.</li>
-                        </ul></p><br/>
-
-                        <h4>Flash</h4>
-                        <p><ul>
-                        <li>Written in AS3, API is mostly the same as in Unity3d version.</li>
-                        <li>Tested with recent Flash Player versions and SDKs.</li>
-                        <li>Can receive touch events from Unity3d if running in Scaleform for Unity3d integration layer.</li>
-                        <li>Works standalone, in Scaleform and in iOS/Android apps.</li>
-                        </ul></p>
-                        <p>The latest stable version can be found in <a href="https://github.com/InteractiveLab/TouchScript.as3">Master branch on GitHub</a>.<br/><a href="https://github.com/InteractiveLab/TouchScript.as3/tree/develop">Develop branch</a> is usually more up-to-date but may contain more bugs.</p>
-                    </section>
-
-                    <section id="docs">
-                        <h2>Help and Documentation</h2>
-                        <p><ul>
-                            <li><a href="tutorials.internals.html">Detailed description of how TouchScript works</a>.</li>
-                            <li><a href="docs/Index.html">Up-to-date Unity3d documentation</a>.</li>
-                            <li>Flash documentation is not yet available.</li>
-                        </ul></p>
-                        <p>If you want to know how TouchScript works please  <a href="https://github.com/InteractiveLab/TouchScript/issues">the issues section</a> on GitHub.</p>
-                        <p>If you have any questions feel free to ask them at <a href="https://github.com/InteractiveLab/TouchScript/issues">the issues section</a> on GitHub.</p>
-                    </section>
-
-                    <section id="description">
-                        <h2>Description</h2>
-                        <p><code>TouchScript</code> consists of a number of components to configure touch and gesture recognition plus common gesture implementations. Gesture recognition works very similar to iOS: a number of gesture recognizers (simply called Gestures) attached to scene objects (GameObject in Unity3d and InteractiveObject in AS3) receive touch point events and change state if they recognize a sequence of touch events as a gesture.</p>
-                        <p>This approach makes it very easy to code complex multitouch interfaces. For example, you got a window and several buttons as its children. You want to be able to drag both windows and tap buttons. It gets complicated when user presses a button and starts dragging it. TouchScript handles this for you.</p><br/>
-
-                        <h4>Gestures</h4>
-                        <p>Gestures handle touch input. They are always attached to scene objects and use their hierarchy to determine which gestures can be recognized.</p>
-                        <p>There are two types of gestures: discrete and continuous. Discrete gestures when recognized set their state to <strong>Recognized</strong> and reset in a frame, while continuous ones if recognized change state to <strong>Began</strong> and keep updating with state <strong>Changed</strong>. When continuous gesture finishes it sets state to <strong>Ended</strong>.</p>
-                        <p>Gestures included in the library:
-                        <ul>
-                            <li><code>Press</code> <em>(discrete)</em> — fires when the first touch is added to an object.</li>
-                            <li><code>Release</code> <em>(discrete)</em> — fires when the last touch is removed from an object.</li>
-                            <li><code>Tap</code> <em>(discrete)</em> — fires if a user lifts off last finger from the object within certain time and movement delta.</li>
-                            <li><code>Long Press</code> <em>(discrete)</em> — fires if a user doesn't lift off last finger from the object for certain time.</li>
-                            <li><code>Pan</code> <em>(continuous)</em> — begins when user starts dragging an object and ends when the last finger is removed.</li>
-                            <li><code>Scale</code> <em>(continuous)</em> — begins when user starts scaling an object and ends when one or less touch points left.</li>
-                            <li><code>Rotate</code> <em>(continuous)</em> — begins when user starts rotating an object and ends when one or less touch points left.</li>
-                            <li><code>Flick</code> <em>(discrete)</em> — fires when fingers are moved fast during short period of time before lifting off.</li>
-                            <li><code>Meta</code> <em>(continuous)</em> — gesture which translates changes in touch points into C# events.</li>
-                        </ul>
-                        There's a family of <code>Simple</code> gestures: <code>SimplePan</code>, <code>SimpleRotate</code> and <code>SimpleScale</code>, which unlike other gestures with similar names are based not on clusters but only care about first two touch points. These gestures take less resources and are more suitable for small tablet-like devices.
                         </p>
-                        <p><span class="label label-important">NOTE:</span> Meta Gesture is sort of a <em>hack</em> to get touch points from an object and still be in gestures hierarchy. You should <strong>never</strong> base your gesture recognition logic on <em>Meta Gesture</em>. Write your own gesture class if you want to handle touch points in some special way.</p>
                     </section>
-
-                    <section id="examples">
-                        <h2>Examples</h2>
-                        <h4>Unity3d</h4>
-                        <p>Unity3d examples can be found in <em>\Examples\General Examples\</em> project, <em>\Examples\Scaleform Examples\</em> project or in <em>Examples</em> folder in Unity package.</p>
-                        <p>Examples included in the package:
-                        <ol>
-                        <li><b>Basic</b> — shows how to set up the environment and how Tap gesture works.</li>
-                        <li><b>Advanced</b> — shows how to work with layers and different gestures in hierarchy.</li>
-                        <li><b>Hit Test</b> — shows how to control which GameObjects receive touch points.</li>
-                        <li><b>Input</b> — shows how to use TouchScript just to get touch point data.</li>
-                        <li><b>Basic Scaleform</b> — shows how to use Unity3d TouchScript combined with AS3 TouchScript. Uses <em>TestScaleformProject</em> from Flash examples. Requires licensed or trial <em>Scaleform for Unity3d</em>. Just copy DLL and .cs files where they are in Scaleform examples.</li>
-                        </ol></p><br/>
-
-                        <h4>Flash</h4>
-                        <p>Flash examples can be found in <em>\Examples\TestProject\</em> and <em>\Examples\TestScaleformProject\</em> projects.</p>
-                        <p>Examples included in the package:
-                        <ol>
-                        <li><b>TestProject</b> — shows how to set up the environment and how most of the gestures work.</li>
-                        <li><b>TestScaleformProject</b> — used with <em>Basic Scaleform</em>, handles touch events coming from Unity via <em>ScaleformInput</em>.</li>
-                        </ol></p>
-                    </section> 
-
-                    <section id="tutorials">
-                        <h2>Tutorials</h4>
-                        <p>For better understanding how TouchScript works and how to use it please read <a href="tutorials.internals.html">TouchScript internals</a> tutorial. It will guide you through most of the features you will need.</p>
-                        <p><strong>Unity3d:</strong>
-                        <ul>
-                            <li><a href="tutorials.unity.html#basic">Basic</a></li>
-                            <li><a href="tutorials.unity.html#advanced">Advanced</a></li>
-                        </ul></p>
-                        <p><strong>Flash:</strong>
-                        <ul>
-                            <li><a href="tutorials.as3.html#basic">Basic</a></li>
-                        </ul></p>
-                    </section>
-
-                    <section id="faq">
-                        <h2>Frequently Asked Questions</h2>
-                        <p><ul>
-                            <li><strong>Build fails in Unity3d Free.</strong><br/>You need to delete all DLLs from <em>TouchScript/Plugins</em> folder except <code>TouchScript.dll</code>. Other DLLs contain code which is not supported in Unity3d Free.</li>
-                            <li><strong>Build for Windows Store/Windows Phone fails.</strong><br/>You need to delete all DLLs from <em>TouchScript/Plugins</em> folder except <code>TouchScript.dll</code>. Other DLLs refer API restricted on these platforms.</li>
-                            <li><strong>TUIO/Windows 7 touch/iOS touch doesn't work.</strong><br/>You most likely haven't added an appropriate touch source. To recieve TUIO messages add somewhere in the scene <code>TuioInput</code> behavior. For getting Win7 touch input add <code>Win7TouchInput</code>, and for mobile devices add <code>MobileInput</code>.</li>
-                            <li><strong>How to make gestures work together?</strong><br/>For gestures to be recognized simultaneously you need to put one into another one's <code>Friendly Gestures</code> list in inspector or call <code>gesture1.AddFriendlyGesture(gesture2);</code> from a script. Otherwise the gesture to begin first takes all the touch points.</li>
-                        </ul></p>
-                    </section>
-
-                    <section id="history">
-                        <h2>Version history - Unity3d:</h2>
-                        
-                        <h4>4.1</h4>
-                        <p><ul>
-                        <li>Fixed a bug with Windows 7 touch in 32-bit apps.</li>
-                        <li>Added PressGesture/ReleaseGesture.IgnoreChildren flag to listen only to touch events on the object.</li>
-                        <li>Added TouchLayer.TouchBegan event.</li>
-                        <li>Fixed compile warnings.</li>
-                        </ul></p>
-
-                        <h4>4.0</h4>
-                        <p><ul>
-                        <li>Added 2D support and example scene.</li>
-                        <li>Methods which were returning RaycastHit now return TouchHit which combines RaycastHit and new RaycastHit2D.</li>
-                        <li>Fixed an issue with levels reloading.</li>
-                        <li>Fixed windows touch input in 64-bit builds.</li>
-                        <li>Touch point target is now copied from RaycastHit.collider.transform, not from RaycastHit.transform since if a RigidBody is attached to object's parent RaycastHit.transform will contain parent transform not object's transform.</li>
-                        <li>Now one camera can have several layers attached.</li>
-                        <li>Updated OSC library used in TUIOInput.</li>
-                        </ul></p>
-
-			            <h4>3.1</h4>
-                        <p><ul>
-                        <li>Updated Scaleform integration to use version 4.2 and Unity 4.3.</li>
-			            <li>Fixed an issue with non-standard camera viewports.</li>
-                        <li>Fixed GUI errors in Unity 4.3.</li>
-                        </ul></p>
-
-                        <h4>3.0</h4>
-                        <p><ul>
-                        <li>Switched to Unity 4.2. Starting from this version Unity 3.5 is officially not supported.</li>
-                        <li>Touch input handling and gesture handling functionality was separated into TouchManager and GestureManager classes. Now it's possible to use raw touch points data without any gesture recognition logic.</li>
-                        <li>Instead of WillRecognizeWith gestures now store an array of Friendly Gestures which now has a nice visual editor.</li>
-                        <li>TouchScript.DLL now passes WACK for Windows Store applications.</li>
-                        <li>Added custom editors for all gestures and managers. Everything looks much better now.</li>
-                        <li>Added Win8TouchInput which uses new Windows 8 API.</li>
-                        <li>Updated FlickGesture and added an example for it.</li>
-                        <li>Fixed an issue with MouseInput leaving stuck touch points (issue #10).</li>
-                        <li>Fixed FullscreenTarget in Foreground mode when camera collider sometimes wouldn't catch touch points.</li>
-                        <li>Fixed Transformer2D with objects without parent transform (issue #30).</li>
-                        <li>Now PreviousPosition for still points is handled correctly.</li>
-                        <li>Simple Scale and Simple Rotate gestures now correctly only react on the first two fingers.</li>
-                        <li>Instead of Vector#.zero gestures return InvalidPosition if a position doesn't make sense in this case.</li>
-                        <li>Simple Pan Gesture now has center at point if it has only one point or between first two points if it has more. To be consistent with SimpleScale and SimpleRotate getures.</li>
-                        <li>Pan Gesture now has its center point between two clusters if there are more than one point.</li>
-                        <li>Tap Gesture and Long Press Gesture are now discrete.</li>
-                        <li>Clusters now return TouchPoint.InvalidPosition instead of throwing an exception if not enough points added.</li>
-                        <li>Base Gesture now returns centroid of all touch points as ScreenPosition instead of the first point's position.</li>
-                        <li>Removed FullscreenBackgroundTarget from the library. Use FullScreenTarget instead.</li>
-                        <li>Removed SimpleLongPressGesture and SimpleFlickGesture.</li>
-                        <li>Removed SimpleTapGesture, TapGesture now reports its position more accurately.</li>
-                        <li>Renamed MinPointDistance to MinPointsDistance and made it actually matter in SimpleScale and SimpleRotate gestures.</li>
-                        <li>Renamed TouchesCount to TouchPointsCount and Touches to TouchPoints on TouchManager.</li>
-                        <li>Moved Win7TouchInput to separate DLL.</li>
-                        <li>Rearranged examples.</li>
-                        <li>Other minor changes and fixes.</li>
-                        </ul></p>
-
-                        <h4>2.1.0</h4>
-                        <p><ul>
-                        <li>Changed several API names to make more sense.</li>
-                        <li>TapGesture now correctly reports touch position.</li>
-                        <li>LongPressGesture now correctly handles cluster's movement.</li>
-                        <li>Renamed Clusters to Cluster and fixed movement calculations for Flick and Tap gestures.</li>
-                        <li>Divided gestures into simple and cluster-based ones. Simple gestures should be faster to process.</li>
-                        <li>Added some features to Scaleform integration.</li>
-                        <li>Touch points projection plane now has its center in collider.bounds.center.</li>
-                        <li>Fixed the issue (#22) with namespaces and default parameters.</li>
-                        </ul></p>
-
-			            <h4>2.0.1</h4>
-                        <p><ul>
-                        <li>Fixed a crash when application using Win7TouchInput exits.</li>
-                        </ul></p>
-						
-                        <h4>2.0</h4>
-                        <p><ul>
-                        <li>Upgraded HitTest mechanics. Now it skips disabled cameras and it's possible to ignore specific layers via Layer Mask. Added a special example illustrating this.</li>
-                        <li>Win7TouchInput and MouseInput now detect if they are run on iOS or Android and don't cause any trouble.</li>
-                        <li>More mac-friendly build process.</li>
-                        <li>Fixed MetaGesture to work on iOS and added it to examples.</li>
-                        <li>Made LongPressGesture and TapGesture more continuous.</li>
-                        <li>Moved TuioInput to separate DLL so it doesn't cause troubles for Unity iOS indie users.</li>
-                        <li>Refactored gestures and added tips to custom editors.</li>
-                        <li>Added second touch simulator to MouseInput which is activated with ALT+click.</li>
-                        </ul></p>
-
-                        <h4>2.0b3</h4>
-                        <p><ul>
-                        <li>Major refactoring.</li>
-                        <li>Added layers system.</li>
-                        <li>Added custom editors to major components.</li>
-                        <li>Setting up a scene is now much easier.</li>
-                        <li>Added good examples and docs.</li>
-                        <li>Integrated Scaleform.</li>
-                        <li>Added iOS and Android support.</li>
-                        <li>Fixed many bugs.</li>
-                        </ul></p>
-
-                        <h4>1.0</h4>
-                        <p><ul>
-                        <li>First release.</li>
-                        </ul></p>
-
-                        <h2>Version history - Flash:</h2>
-                        <h4>1.1</h4>
-                        <p><ul>
-                        <li>Added Scaleform support.</li>
-                        </ul></p>
-
-                        <h4>1.0</h4>
-                        <p><ul>
-                        <li>First release. Cloned functionality from Unity3d repo.</li>
-                        </ul></p>
+                    <section>
+                        <p>Please refer to <a href="https://github.com/InteractiveLab/TouchScript/wiki">TouchScript wiki</a> for more info and tutorials.</p>
                     </section>
                 </div>
             </div>
