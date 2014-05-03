@@ -3,9 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 
-<head>
-<title>A Sandcastle Documented Class Library - Table of Content</title>
-<link rel="stylesheet" href="TOC.css">
+<head runat="server">
+<title>TouchScript — multitouch library for Unity - Table of Content</title>
+<link rel="stylesheet" href="TOC.css" />
 <link rel="shortcut icon" href="favicon.ico"/>
 <script type="text/javascript" src="TOC.js"></script>
 </head>
@@ -34,10 +34,8 @@ Keyword Index
 <div id="divNavOpts" class="NavOpts" style="height: 20px;">
     <img class="TOCLink" onclick="javascript: SyncTOC();" src="SyncTOC.gif"
         height="16" width="16" alt="Sync to TOC"/>
-    <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(true);"
-        src="ExpandAll.bmp" height="16" width="16" alt="Expand all "/>
     <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(false);"
-        src="CollapseAll.bmp" height="16" width="16" alt="Collapse all" />
+        src="CollapseAll.png" height="16" width="16" alt="Collapse all" />
     <img class="TOCLink" onclick="javascript: ShowHideIndex(true);"
         src="Index.gif" height="16" width="16" alt="Index" />
     <img class="TOCLink" onclick="javascript: ShowHideSearch(true);"
